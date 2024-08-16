@@ -1,13 +1,15 @@
  #define LED 13
- #define time 1000
+ #define TIMELED 1000
 void setup() {
-pinMode(num, OUTPUT);
+  //pinMode(argument1, argument2);
+  pinMode(LED, OUTPUT);
 }
 
 void loop() {
-  //
+  //digitalWrite(argument1, argument2(HIGH, true, 1))
   digitalWrite(LED, HIGH);
-  delay(time);
+  delay(TIMELED);
+  //digitalWrite(argument1, argument2(LOW, false, 0))
   digitalWrite(LED, LOW); 
-  delay(time);
+  delay(TIMELED);
 }
