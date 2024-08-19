@@ -10,7 +10,7 @@ void loop() {
   /*Se crea la variable "dato" para leer si hay un true o un false en 
   el puerto digital nro 2, esto cambiará con el pulsado del botón*/
   byte dato = digitalRead(BUTTON);
-  if (dato==true){
+  if (dato==1){
     /*Si es true, el led se encenderá*/
     digitalWrite(LED, HIGH);
   }else{
