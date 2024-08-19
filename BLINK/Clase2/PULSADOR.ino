@@ -1,14 +1,21 @@
+#define LED 13
+#define BUTTON 2
+
 void setup() {
-  pinMode(13, OUTPUT);
-  pinMode(2, INPUT);
+  pinMode(LED, OUTPUT);
+  pinMode(BUTTON, INPUT);
 }
 
 void loop() {
-  
-  byte dato = digitalRead(2);
-  if (dato==1){
-    digitalWrite(13,1);
+  /*Se crea la variable "dato" para leer si hay un true o un false en 
+  el puerto digital nro 2, esto cambiará con el pulsado del botón*/
+  byte dato = digitalRead(BUTTON);
+  if (dato==true){
+    /*Si es true, el led se encenderá*/
+    digitalWrite(LED, HIGH);
   }else{
-    digitalWrite(13,0);
+    /*Si es false, el led se apagará, respondiendo de esta manera
+    al pulso del botón.*/
+    digitalWrite(LED, LOW);
   }
 }
