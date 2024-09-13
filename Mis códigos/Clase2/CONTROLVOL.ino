@@ -30,7 +30,7 @@ void aumentar(){
             volumen++;
             EEPROM.write(CELDA,volumen);
         }
-    lasttime = millis();
+        lasttime = millis();
     }
 }
 
@@ -40,6 +40,6 @@ void disminuir(){
             volumen=volumen-1;
             EEPROM.write(CELDA,volumen);
         }
-    lasttime = millis();
+        lasttime = millis();
     }
 }
