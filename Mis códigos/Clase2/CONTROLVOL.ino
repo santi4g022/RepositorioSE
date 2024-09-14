@@ -5,29 +5,30 @@
 #define VOLMAX 20
 #define VOLMIN 0
 #define CELDA 0
-unsigned short volumen;
+#define TIME 5000
+uint8_t volumen = EEPROM.read(CELDA);
 volatile unsigned long lasttime = 0;
-volatile unsigned long debounceDelay = 50;
+volatile unsigned long debounceDelay = 60;
 
 void setup(){
     pinMode(BOTONMAS,INPUT_PULLUP);
     pinMode(BOTONMENOS,INPUT_PULLUP);
-    attachInterrupt(digitalPinToInterrupt(BOTONMAS,aumentar,RISING));
-    attachInterrupt(digitalPinToInterrupt(BOTONMENOS,disminuir,RISING));
-    EEPROM.read(CELDA);
+    attachInterrupt(digitalPinToInterrupt(BOTONMAS),aumentar,FALLING);
+    attachInterrupt(digitalPinToInterrupt(BOTONMENOS),disminuir,FALLING);
     Serial.begin(BAUDRATE);
 }
 
 void loop(){
-    Serial.print("Volumen: ");
-    Serial.print(volumen);
-    Serial.println(".");
+    delay(TIME);
 }
 
 void aumentar(){
     if(millis() - lasttime > debounceDelay){
         if(volumen<VOLMAX){
             volumen++;
+            Serial.print("Volumen: ");
+            Serial.print(volumen);
+            Serial.println(".");
             EEPROM.write(CELDA,volumen);
         }
         lasttime = millis();
@@ -37,7 +38,10 @@ void aumentar(){
 void disminuir(){
     if(millis() - lasttime > debounceDelay){
         if(volumen>VOLMIN){
-            volumen=volumen-1;
+            volumen--;
+            Serial.print("Volumen: ");
+            Serial.print(volumen);
+            Serial.println(".");
             EEPROM.write(CELDA,volumen);
         }
         lasttime = millis();
