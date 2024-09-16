@@ -6,6 +6,7 @@
 #define VOLMIN 0
 #define CELDA 0
 #define TIME 5000
+
 uint8_t volumen = EEPROM.read(CELDA);
 volatile unsigned long lasttime = 0;
 volatile unsigned long debounceDelay = 60;
